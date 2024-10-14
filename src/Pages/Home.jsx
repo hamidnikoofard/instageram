@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import { UserContext } from "../Components/auth/UserProvider";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { getUser } from "../utils/manageUser&Id";
 

@@ -13,12 +13,11 @@ import { regex } from "../utils/regex";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { setUser } from "../utils/manageUser&Id";
-import { UserContext } from "../Components/auth/UserProvider";
 import { setToken } from "../utils/manageToken";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setUserName, setUserId } = useContext(UserContext);
+
   const resolver = yup.object({
     username: yup.string().required("Please enter your username"),
     password: yup
@@ -41,8 +40,6 @@ const Login = () => {
         }
       );
       setToken(response.data.accessToken)
-      setUserName(response.data.data.username);
-      setUserId(response.data.data._id);
       setUser(response.data.data.username);
       reset();
       navigate("/home");
