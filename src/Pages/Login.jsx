@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Logo from "../assets/logos_instagram.png";
 import Signupimg from "../assets/img/signup/1.png";
 import Input from "../Components/Share/Input";
@@ -6,7 +6,7 @@ import Button from "../Components/Share/Button";
 import { FaFacebookSquare } from "react-icons/fa";
 import googlePlay from "../assets/img/signup/googleplay.png";
 import microsoft from "../assets/img/signup/microsoft.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { regex } from "../utils/regex";
@@ -14,10 +14,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { setUser } from "../utils/manageUser&Id";
 import { setToken } from "../utils/manageToken";
+import Loading from "../Components/Share/Loading";
 
 const Login = () => {
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(false);
+  
   const resolver = yup.object({
     username: yup.string().required("Please enter your username"),
     password: yup
@@ -31,6 +33,7 @@ const Login = () => {
   });
 
   const submitForm = handleSubmit(async (formFild) => {
+    setLoading(true);
     try {
       const response = await axios.post(
         "https://instagram-backend-ugd3.onrender.com/api/user/login",
@@ -39,14 +42,22 @@ const Login = () => {
           password: formFild.password,
         }
       );
-      setToken(response.data.accessToken)
+      setToken(response.data.accessToken);
       setUser(response.data.data.username);
       reset();
-      navigate("/home");
+      setIsUserLogin(true);
+
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
+      navigate("/profile");
     }
   });
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="flex justify-center items-center min-h-screen  px-4">

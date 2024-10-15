@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
-import Home from "./Pages/Home";
 import ProtectedRouter from "./Components/auth/ProtectedRouter";
 import PublicRoute from "./Components/auth/PublicRoute";
+import Profile from "./Pages/Profile";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -22,10 +22,10 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: "/home",
+    path: "/profile",
     element: (
       <ProtectedRouter>
-        <Home />
+        <Profile />
       </ProtectedRouter>
     ),
   },

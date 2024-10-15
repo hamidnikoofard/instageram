@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../assets/logos_instagram.png";
 import Button from "../Components/Share/Button";
 import { FaFacebookSquare } from "react-icons/fa";
@@ -11,9 +11,11 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { regex } from "../utils/regex";
 import axios from "axios";
+import Loading from "../Components/Share/Loading";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const resolver = yup.object({
     email: yup
@@ -33,6 +35,7 @@ const SignUp = () => {
   });
 
   const submitForm = handleSubmit(async (formfild) => {
+    setLoading(true);
     try {
       const response = await axios.post(
         "https://instagram-backend-ugd3.onrender.com/api/user/signup",
@@ -42,13 +45,21 @@ const SignUp = () => {
           email: formfild.email,
         }
       );
-      navigate("/");
       console.log(response);
     } catch (error) {
       console.log(error);
+      setLoading(false)
+    } finally {
+      setLoading(false);
+      navigate("/");
     }
     reset();
   });
+
+  if(loading){
+    <Loading />
+  }
+
   return (
     <div className="flex justify-center items-center min-h-screen flex-col px-4">
       <div className="w-full max-w-[350px] p-6 md:p-10 bg-white border border-gray-300 flex flex-col items-center mb-3 rounded-sm mt-4">
