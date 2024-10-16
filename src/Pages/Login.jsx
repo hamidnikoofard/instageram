@@ -92,7 +92,7 @@ const Login = () => {
                   error={formState.errors?.password?.message}
                 />
                 <div className="w-full mt-2">
-                  <Button title="Log in" type="submit" />
+                  <Button title="Log in" type="submit" variant="primary" />
                 </div>
               </form>
 
