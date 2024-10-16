@@ -12,6 +12,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { regex } from "../utils/regex";
 import axios from "axios";
 import Loading from "../Components/Share/Loading";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -46,18 +47,21 @@ const SignUp = () => {
         }
       );
       console.log(response);
+      navigate("/");
     } catch (error) {
-      console.log(error);
-      setLoading(false)
+      const errorMassage = error.response.data.message
+      toast("Username has already been taken" , {
+        position : "top-center"
+      })
+      console.log(error.response.data.message);
     } finally {
       setLoading(false);
-      navigate("/");
     }
     reset();
   });
 
   if(loading){
-    <Loading />
+    return <Loading />
   }
 
   return (
