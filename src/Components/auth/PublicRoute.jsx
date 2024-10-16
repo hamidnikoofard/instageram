@@ -8,7 +8,7 @@ const PublicRoute = ({ children }) => {
   const {user} = useContext(AuthContext)
 
   if(token && user){
-    return <Navigate to={"/home"} />
+    return <Navigate to={"/profile"} />
   }
   return children;
 };

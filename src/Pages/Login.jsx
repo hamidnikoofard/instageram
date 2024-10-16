@@ -15,6 +15,7 @@ import axios from "axios";
 import { setUser } from "../utils/manageUser&Id";
 import { setToken } from "../utils/manageToken";
 import Loading from "../Components/Share/Loading";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -48,7 +49,11 @@ const Login = () => {
       setIsUserLogin(true);
 
     } catch (error) {
-      console.log(error);
+      const errorMassage = error.response.data.message
+      toast.error(errorMassage , {
+        position : "top-center"
+      })
+      console.log(error.response.data.message);
     } finally {
       setLoading(false);
       navigate("/profile");
