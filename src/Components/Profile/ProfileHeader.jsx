@@ -3,7 +3,7 @@ import profilePic from "../../assets/Profile.png";
 import Button from "../Share/Button";
 import { Link } from "react-router-dom";
 
-const ProfileHeader = ({ user }) => {
+const ProfileHeader = ({ user  }) => {
   const { profilePicture, username, followers, followings } = user;
 
   return (

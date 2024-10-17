@@ -31,7 +31,7 @@ const Profile = () => {
       <div className="w-full max-w-5xl px-4 py-6">
         <div className="bg-white p-6 rounded-lg shadow-md mb-8">
           {userData ? (
-            <ProfileHeader user={userData} />
+            <ProfileHeader user={userData} title={"Edit Profile"} address={"/home/editprofile"}/>
           ) : (
             <Loading />
           )}

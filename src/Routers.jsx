@@ -9,6 +9,7 @@ import Followers from "./Pages/Followers";
 import Following from "./Pages/Following";
 import SearchUser from "./Pages/SearchUser";
 import NavBar from "./Layout/NavBar";
+import UserPage from "./Pages/UserPage";
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
       {
         path: "search",
         element: <SearchUser />,
+      },
+      {
+        path : "search/:userid",
+        element : <UserPage />
       },
     ],
   },

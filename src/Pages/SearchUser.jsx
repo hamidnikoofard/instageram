@@ -74,7 +74,7 @@ const SearchUser = () => {
                   </h2>
                   <div className="w-full space-y-2">
                     {users.map((user) => (
-                      <FollowerCard username={user.username} key={user._id} />
+                      <FollowerCard username={user.username} key={user._id} id={user._id} />
                     ))}
                   </div>
                 </>
