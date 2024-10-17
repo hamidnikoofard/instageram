@@ -11,7 +11,7 @@ const FollowerCard = ({ username, profilePicture }) => {
           alt={username}
           className="w-12 h-12 rounded-full border border-gray-300"
         />
-        <p className="text-lg font-semibold ml-4">{username}</p>
+        <p className="md:text-lg text-sm font-semibold ml-4">{username}</p>
       </div>
       <Button title={"Follow"} className='px-5 w-full sm:w-auto'/>
     </div>
