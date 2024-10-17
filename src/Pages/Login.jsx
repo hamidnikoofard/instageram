@@ -56,7 +56,7 @@ const Login = () => {
       console.log(error.response.data.message);
     } finally {
       setLoading(false);
-      navigate("/profile");
+      navigate("/home");
     }
   });
 

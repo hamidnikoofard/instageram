@@ -7,6 +7,9 @@ import Profile from "./Pages/Profile";
 import EditProfile from "./Pages/EditProfile";
 import Followers from "./Pages/Followers";
 import Following from "./Pages/Following";
+import SearchUser from "./Pages/SearchUser";
+import NavBar from "./Layout/NavBar";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -25,35 +28,34 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: "/profile",
+    path: "/home",
     element: (
       <ProtectedRouter>
-        <Profile />
+        <NavBar />
       </ProtectedRouter>
     ),
-  },
-  {
-    path: "/editprofile",
-    element: (
-      <ProtectedRouter>
-        <EditProfile />
-      </ProtectedRouter>
-    ),
-  },
-  {
-    path: "/followers",
-    element: (
-      <ProtectedRouter>
-        <Followers />
-      </ProtectedRouter>
-    ),
-  },
-  {
-    path: "/followings",
-    element: (
-      <ProtectedRouter>
-        <Following />
-      </ProtectedRouter>
-    ),
+    children: [
+      {
+        path: "profile",
+        element: <Profile />,
+      },
+      {
+        path: "editprofile",
+        element: <EditProfile />,
+      },
+      {
+        path: "followers",
+        element: <Followers />,
+      },
+      {
+        path: "followings",
+        element: <Following />,
+      },
+      {
+        path: "search",
+        element: <SearchUser />,
+      },
+    ],
   },
 ]);
+

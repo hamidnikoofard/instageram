@@ -22,11 +22,11 @@ const ProfileHeader = ({ user }) => {
         </div>
 
         <div className="flex gap-6 text-gray-600">
-          <Link to={"/followers"}>
+          <Link to={"/home/followers"}>
             <strong>{followers.length}</strong> Followers
           </Link>
 
-          <Link to={"/followings"}>
+          <Link to={"/home/followings"}>
             <strong>{followings.length}</strong> Following
           </Link>
         </div>
@@ -35,7 +35,7 @@ const ProfileHeader = ({ user }) => {
           <p>This is the user's bio. Add a description here...</p>
         </div>
         <div className="w-full">
-          <Link to={"/editprofile"}>
+          <Link to={"/home/editprofile"}>
             <Button
               title="Edit Profile"
               variant="secondary"

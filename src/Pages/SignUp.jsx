@@ -86,6 +86,7 @@ const SignUp = () => {
             label="Mobile Number or Email"
             type="text"
             error={formState.errors?.email?.message}
+            name={"email"}
           />
           <Input
             {...register("password")}
@@ -93,18 +94,21 @@ const SignUp = () => {
             type="password"
             showPasswordToggle={false}
             error={formState.errors?.password?.message}
+            name={"Password"}
           />
           <Input
             {...register("fullname")}
             label="Full Name"
             type="text"
             error={formState.errors?.fullname?.message}
+            name={"fullname"}
           />
           <Input
             {...register("username")}
             label="User Name"
             type="text"
             error={formState.errors?.username?.message}
+            name={"username"}
           />
           <p className="text-center text-xs mt-2 text-gray-500">
             People who use our service may have uploaded your contact
