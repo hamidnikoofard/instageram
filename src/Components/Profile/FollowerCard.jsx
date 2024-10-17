@@ -9,7 +9,7 @@ const FollowerCard = ({ username, profilePicture }) => {
         <img
           src={profilePic || profilePicture}
           alt={username}
-          className="w-12 h-12 rounded-full border border-gray-300"
+          className="md:w-12 md:h-12 h-9 w-9 rounded-full border border-gray-300"
         />
         <p className="md:text-lg text-sm font-semibold ml-4">{username}</p>
       </div>
