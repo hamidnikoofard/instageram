@@ -4,16 +4,16 @@ import Button from '../Share/Button';
 
 const FollowerCard = ({ username, profilePicture }) => {
   return (
-    <div className="flex items-center p-4 border-b border-gray-200 w-full justify-between">
-      <img 
-        src={profilePic || profilePicture} 
-        alt={username} 
-        className="w-12 h-12 rounded-full border border-gray-300"
-      />
-      <div className="ml-4">
-        <p className="text-lg font-semibold">{username}</p>
+    <div className="flex items-center p-4 border-b border-gray-200 w-full justify-between gap-4">
+      <div className="flex items-center w-full sm:w-auto">
+        <img
+          src={profilePic || profilePicture}
+          alt={username}
+          className="w-12 h-12 rounded-full border border-gray-300"
+        />
+        <p className="text-lg font-semibold ml-4">{username}</p>
       </div>
-      <Button title={"Follow"} className='px-5'/>
+      <Button title={"Follow"} className='px-5 w-full sm:w-auto'/>
     </div>
   );
 };
