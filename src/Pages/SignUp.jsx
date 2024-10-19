@@ -26,7 +26,7 @@ const SignUp = () => {
     password: yup
       .string()
       .required("Please enter your password")
-      .matches(regex.password, "Password must be at least 8 characters long"),
+      .matches(regex.password, "Password must be at least 6 characters long"),
     fullname: yup.string().required("Please enter your full name"),
     username: yup.string().required("Please enter your username"),
   });

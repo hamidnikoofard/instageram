@@ -26,7 +26,7 @@ const Login = () => {
     password: yup
       .string()
       .required("Please enter your password")
-      .matches(regex.password, "Password must be at least 8 characters long"),
+      .matches(regex.password, "Password must be at least 6 characters long"),
   });
 
   const { register, reset, formState, handleSubmit } = useForm({
