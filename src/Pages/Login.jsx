@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useState } from "react";
 import Logo from "../assets/logos_instagram.png";
 import Signupimg from "../assets/img/signup/1.png";
 import Input from "../Components/Share/Input";
@@ -6,13 +6,13 @@ import Button from "../Components/Share/Button";
 import { FaFacebookSquare } from "react-icons/fa";
 import googlePlay from "../assets/img/signup/googleplay.png";
 import microsoft from "../assets/img/signup/microsoft.png";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { regex } from "../utils/regex";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
-import { setUser } from "../utils/manageUser&Id";
+import { setId, setUser } from "../utils/manageUser&Id";
 import { setToken } from "../utils/manageToken";
 import Loading from "../Components/Share/Loading";
 import { toast } from "react-toastify";
@@ -45,6 +45,7 @@ const Login = () => {
       );
       setToken(response.data.accessToken);
       setUser(response.data.data.username);
+      setId(response.data.data._id)
       reset();
       setIsUserLogin(true);
 

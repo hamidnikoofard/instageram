@@ -4,6 +4,7 @@ import { MdOutlineMovie } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { Outlet } from "react-router-dom";
 import NavItem from "../Components/Share/NavItem";
+import { IoAddCircleOutline } from "react-icons/io5";
 
 const NavBar = () => {
   return (
@@ -16,7 +17,7 @@ const NavBar = () => {
           <div className="flex justify-between items-center h-16">
             <NavItem to="/home" icon={<AiOutlineHome size={24} />} label="Home" />
             <NavItem to="/home/search" icon={<AiOutlineSearch size={24} />} label="Search" />
-            <NavItem to="/home/reels" icon={<MdOutlineMovie size={24} />} label="Reels" />
+            <NavItem to="/home/addpost" icon={<IoAddCircleOutline size={24} />} label="Add Post" />
             <NavItem to="/home/activity" icon={<AiOutlineHeart size={24} />} label="Activity" />
             <NavItem to="/home/profile" icon={<CgProfile size={24} />} label="Profile" />
           </div>

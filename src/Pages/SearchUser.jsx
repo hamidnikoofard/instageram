@@ -11,7 +11,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 const SearchUser = () => {
   const resolver = yup.object({
-    search: yup.string().required("Enter username"),
+    search: yup.string().required("Please enter a username"),
   });
 
   const { register, reset, handleSubmit, formState } = useForm({
@@ -40,46 +40,61 @@ const SearchUser = () => {
   });
 
   return (
-    <div className="flex justify-center bg-gray-100 min-h-screen p-4">
-      <div className="w-full max-w-5xl bg-white border shadow-md border-gray-300 flex flex-col items-center rounded-md">
-        <div className="w-full px-4 sm:px-6 md:px-10 py-6">
-          <form
-            onSubmit={submitForm}
-            className="flex flex-col sm:flex-row gap-4 items-center"
-          >
-            <div className="w-full sm:w-2/3 md:w-3/4">
-              <Input
-                {...register("search")}
-                label={"Search"}
-                name={"search"}
-                type={"text"}
-                error={formState.errors?.search?.message}
-              />
-            </div>
-            <Button
-              title={"Search"}
-              icon={<AiOutlineSearch />}
-              className="px-4 h-9 w-full sm:w-auto"
-            />
-          </form>
+    <div className="flex justify-center items-center bg-gray-100 min-h-screen p-6">
+      <div className="w-full max-w-3xl bg-white border border-gray-300 rounded-xl shadow-lg p-8 space-y-8">
+        {/* Header */}
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-800 mb-2">
+            Search Users
+          </h1>
+          <p className="text-gray-600">
+            Enter a username to find users on the platform.
+          </p>
         </div>
-        <div className="w-full px-4 sm:px-6 md:px-10 py-4">
+
+        <form
+          onSubmit={submitForm}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <div className="w-full sm:w-2/3">
+            <Input
+              {...register("search")}
+              label={"Search Username"}
+              name={"search"}
+              type={"text"}
+              error={formState.errors?.search?.message}
+            />
+          </div>
+          <Button
+            title={"Search"}
+            icon={<AiOutlineSearch />}
+            className="flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 ease-in-out w-full sm:w-auto"
+          />
+        </form>
+
+        <div className="w-full">
           {loading && <Loading />}
           {!loading && hasSearched && (
             <div>
               {users.length > 0 ? (
                 <>
-                  <h2 className="font-semibold mb-4 text-center">
-                    Search results
+                  <h2 className="text-lg font-semibold text-center mb-4">
+                    Search Results
                   </h2>
-                  <div className="w-full space-y-2">
+                  <div className="flex flex-col justify-center gap-4">
                     {users.map((user) => (
-                      <FollowerCard username={user.username} key={user._id} id={user._id} />
+                      <FollowerCard
+                        username={user.username}
+                        key={user._id}
+                        id={user._id}
+                      />
                     ))}
                   </div>
                 </>
               ) : (
-                <p className="text-lg font-semibold text-center">No results found</p>
+                <p className="text-center text-gray-600 font-medium">
+                  No users found.
+                </p>
               )}
             </div>
           )}

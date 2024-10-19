@@ -10,6 +10,7 @@ import Following from "./Pages/Following";
 import SearchUser from "./Pages/SearchUser";
 import NavBar from "./Layout/NavBar";
 import UserPage from "./Pages/UserPage";
+import AddPsot from "./Pages/AddPost";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
+      },
+      {
+        path : "addpost",
+        element : <AddPsot />
       },
       {
         path: "editprofile",

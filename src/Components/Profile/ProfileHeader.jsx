@@ -2,8 +2,9 @@ import React from "react";
 import profilePic from "../../assets/Profile.png";
 import Button from "../Share/Button";
 import { Link } from "react-router-dom";
+import CustomLink from "../Share/CustomLink";
 
-const ProfileHeader = ({ user  }) => {
+const ProfileHeader = ({ user , address , variant , title , onClick }) => {
   const { profilePicture, username, followers, followings } = user;
 
   return (
@@ -35,13 +36,13 @@ const ProfileHeader = ({ user  }) => {
           <p>This is the user's bio. Add a description here...</p>
         </div>
         <div className="w-full">
-          <Link to={"/home/editprofile"}>
-            <Button
-              title="Edit Profile"
-              variant="secondary"
-              className="text-sm py-1 px-4"
-            />
-          </Link>
+          <CustomLink
+            title={title}
+            variant={variant}
+            className="text-sm py-1 px-4 w-full"
+            address={address}
+            onClick={onClick}
+          />
         </div>
       </div>
     </div>
