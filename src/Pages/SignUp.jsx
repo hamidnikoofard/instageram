@@ -36,6 +36,8 @@ const SignUp = () => {
   });
 
   const submitForm = handleSubmit(async (formfild) => {
+    console.log(formfild);
+
     setLoading(true);
     try {
       const response = await axios.post(
@@ -49,10 +51,10 @@ const SignUp = () => {
       console.log(response);
       navigate("/");
     } catch (error) {
-      const errorMassage = error.response.data.message
-      toast("Username has already been taken" , {
-        position : "top-center"
-      })
+      const errorMassage = error.response.data.message;
+      toast("Username has already been taken", {
+        position: "top-center",
+      });
       console.log(error.response.data.message);
     } finally {
       setLoading(false);
@@ -60,8 +62,8 @@ const SignUp = () => {
     reset();
   });
 
-  if(loading){
-    return <Loading />
+  if (loading) {
+    return <Loading />;
   }
 
   return (
@@ -92,9 +94,8 @@ const SignUp = () => {
             {...register("password")}
             label="Password"
             type="password"
-            showPasswordToggle={false}
+            showpass="Show"
             error={formState.errors?.password?.message}
-            name={"Password"}
           />
           <Input
             {...register("fullname")}

@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import Logo from "../assets/logos_instagram.png";
 import Signupimg from "../assets/img/signup/1.png";
 import Input from "../Components/Share/Input";
@@ -20,7 +20,7 @@ import { toast } from "react-toastify";
 const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  
+
   const resolver = yup.object({
     username: yup.string().required("Please enter your username"),
     password: yup
@@ -45,15 +45,14 @@ const Login = () => {
       );
       setToken(response.data.accessToken);
       setUser(response.data.data.username);
-      setId(response.data.data._id)
+      setId(response.data.data._id);
       reset();
       setIsUserLogin(true);
-
     } catch (error) {
-      const errorMassage = error.response.data.message
-      toast.error(errorMassage , {
-        position : "top-center"
-      })
+      const errorMassage = error.response.data.message;
+      toast.error(errorMassage, {
+        position: "top-center",
+      });
       console.log(error.response.data.message);
     } finally {
       setLoading(false);
