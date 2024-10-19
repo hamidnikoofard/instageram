@@ -9,7 +9,6 @@ const Profile = () => {
   const [article, setArticle] = useState([]);
   const userName = getUser();
 
-
   const getData = async () => {
     try {
       const response = (
@@ -43,10 +42,9 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="flex justify-center bg-gray-100 min-h-screen p-6">
+    <div className="flex justify-center bg-gray-100 min-h-screen">
       <div className="w-full max-w-5xl px-4 py-6">
-        <div className="bg-white p-8 rounded-xl shadow-lg mb-10">
-          {/* Profile Header */}
+        <div className="bg-white p-6 rounded-xl shadow-lg mb-10">
           <div>
             {userData ? (
               <ProfileHeader
@@ -59,9 +57,7 @@ const Profile = () => {
               <Loading />
             )}
           </div>
-
-          {/* Article Section */}
-          {/* <div className="flex flex-col items-center mt-10 border-t border-solid border-gray-300 pt-6">
+          <div className="flex flex-col items-center mt-10 border-t border-solid border-gray-300 pt-6">
             {article.length > 0 ? (
               <>
                 <h1 className="text-xl font-semibold text-gray-800 mb-6">
@@ -69,7 +65,10 @@ const Profile = () => {
                 </h1>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {article.map((art, index) => (
-                    <div key={index} className="p-6 bg-gray-50 rounded-lg shadow hover:shadow-lg transition-shadow">
+                    <div
+                      key={index}
+                      className="p-4 bg-gray-50 rounded-lg shadow hover:shadow-lg transition-shadow"
+                    >
                       <h2 className="text-lg font-semibold text-gray-700 mb-2">
                         {art.title}
                       </h2>
@@ -79,9 +78,11 @@ const Profile = () => {
                 </div>
               </>
             ) : (
-              <h2 className="text-lg font-semibold text-gray-500">No posts yet</h2>
+              <h2 className="text-lg font-semibold text-gray-500">
+                No posts yet
+              </h2>
             )}
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
